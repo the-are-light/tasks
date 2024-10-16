@@ -2,13 +2,46 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-void main() {
-    float a = 5.0; int x = 0;
-    for (float i = 0; i <= a; i += 0.1) if (cos(i) == cos(-i)) x = 2;
-    for (float i = 0; i <= a; i += 0.1) if (-cos(i) == cos(-i)) x = 1;
-    for (float i = 0; i <= a; i += 0.1) if (cos(i) != cos(-i) && -cos(i) != cos(-i)) x = 0;
-
-    if (x == 2) std::cout << "The function is even" << std::endl;
-    else if (x == 1) std::cout << "The function is odd" << std::endl;
-    else std::cout << "The function is not odd and not even" << std::endl;
+double func(double x) {
+    return cos(x);
 }
+
+int main()
+{
+
+    double a, eps = 1.0E-7, a_step; 
+    int flag = 1;
+    std::cout << "Enter the value of a, from which there will be a segment [-a;a]: ";
+    std::cin >> a;
+    std::cout << "Enter the value of a_step: ";
+    std::cin >> a_step;
+
+    for (double x = -a; x <= a; x += a_step) {
+        if (fabs(func(x) - func(-x) > eps)) {
+            flag = 0;
+            break;
+        }
+    }
+    if (flag) {
+        std::cout << "Is even";
+        return 0;
+    }
+    flag = 1;
+    for (double x = -a; x <= a; x += a_step) {
+        if (fabs(func(x) + func(-x) > eps)) {
+            flag = 0;
+            break;
+        }
+    }
+    if (flag) {
+        std::cout << "Is odd";
+        return 0;
+    }
+
+    else {
+        std::cout << "Is diff";
+    }
+
+
+}
+
