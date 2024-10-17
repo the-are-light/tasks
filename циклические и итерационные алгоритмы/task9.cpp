@@ -3,7 +3,7 @@
 
 void main() {
     setlocale(LC_ALL, "ru");
-    double e = 1.0E-20, s = 2, si = 0, t = 1, n = 1;
+    double e = 1.0E-10, s = 2, si = 0, t = 1, n = 1;
     while (abs(s - si) > e) {
         si = s; n++;
         t /= n; s += t;
