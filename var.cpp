@@ -5,12 +5,10 @@ using namespace std;
 
 void main()
 {
-
 	setlocale(LC_ALL, "Russian");
 
 	const int a = 4;
 	int* arr = new int[a];
-
 	arr[0] = 0;
 	arr[1] = 1;
 	arr[2] = 1;
@@ -32,12 +30,9 @@ void main()
 	new_arr[0] = 1;
 
 	for (int i = a-1; i > 0; i--) {
-		
 		new_arr[i] ^= arr[i];
 		// думал как решить 7+1 и примеры, приводящие к числам, кратным 2;
 		//if ( (new_arr[i] ^ arr[i]) == 0 && arr[i] == 1) new_arr[i-1] = 1;
-
-
 		cout << new_arr[i] << endl;
 	}
 
@@ -50,5 +45,4 @@ void main()
 
 	cout << m << " " << n;
 	delete[] arr; delete[] new_arr;
-
 }
